@@ -1,0 +1,19 @@
+{
+  "name": "vue-sandbox",
+  "version": "1.0.0",
+  "description": "vue-sandbox",
+  "repository": {},
+  "main": "index.js",
+  "scripts": {
+    "sync": "browser-sync start --files 'js/*.js' --server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.0.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.17.0"
+  }
+}
