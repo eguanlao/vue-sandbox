@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="node_modules/vue/dist/vue.js"></script>
+
+  <div id="app">
+    <template v-if="ok">
+      <h1>Title</h1>
+      <p>Paragraph</p>
+      <p>Paragraph</p>
+    </template>
+    <div v-if="Math.random() > 0.5">
+      Now you see me
+    </div>
+    <div v-else>
+      Now you don't
+    </div>
+    <h1 v-show="ok">Hello!</h1>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      computed: {
+        ok: function() {
+          return Math.random() > 0.5;
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

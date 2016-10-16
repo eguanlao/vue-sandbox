@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="node_modules/vue/dist/vue.js"></script>
+
+  <ul id="example1">
+    <template v-for="(item, index) of items">
+      <li>{{ parentMessage}} - {{ index }} - {{ item.message }}</li>
+    </template>
+  </ul>
+
+  <script>
+    new Vue({
+      el: '#example1',
+      data: {
+        parentMessage: 'Parent',
+        items: [{
+          message: 'Foo'
+        }, {
+          message: 'Bar'
+        }]
+      }
+    });
+  </script>
+
+  <ul id="repeat-object" class="demo">
+    <li v-for="(value, key) in object">
+      {{ key }} : {{ value }}
+    </li>
+  </ul>
+
+  <script>
+    new Vue({
+      el: '#repeat-object',
+      data: {
+        object: {
+          FirstName: 'John',
+          LastName: 'Doe',
+          Age: 30
+        }
+      }
+    });
+  </script>
+
+  <div id="app">
+    <span v-for="n in 10">{{ n }}</span>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app'
+    });
+  </script>
+
+</body>
+
+</html>

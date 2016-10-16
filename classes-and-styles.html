@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    .static {
+      font-size: 2em;
+      color: grey;
+    }
+
+    .active {
+      color: green;
+    }
+
+    .text-danger {
+      font-size: 3em;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="node_modules/vue/dist/vue.js"></script>
+
+  <div id="object-syntax">
+    <div class="static" v-bind:class="classObject" v-bind:style="styleObject">
+      {{ message }}
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#object-syntax',
+      data: {
+        isActive: true,
+        error: null
+      },
+      computed: {
+        classObject: function() {
+          return {
+            active: this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+          };
+        },
+        styleObject: function() {
+          return {
+            activeColor: 'red',
+            fontSize: 30
+          };
+        },
+        message: function() {
+          if (this.classObject.active) return 'Active';
+          if (this.classObject['text-danger']) return 'Danger!';
+          return 'Normal';
+        }
+      }
+    });
+  </script>
+
+  <div id="array-syntax">
+    <div class="static" v-bind:class="[{ active: isActive }, errorClass]">
+      Message
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#array-syntax',
+      data: {
+        activeClass: 'active',
+        errorClass: 'text-danger',
+      },
+      computed: {
+        isActive: function() {
+          return this.activeClass;
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
